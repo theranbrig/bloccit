@@ -1,2 +1,4 @@
-node_modules
+
 Assignments.md
+/node_modules
++.env
