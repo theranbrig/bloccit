@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <% include ./partials/head.ejs %>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <% include ./partials/navbar.ejs %>
+
+    <!-- Page Content -->
+    <main class="container">
+      <header class="jumbotron my-4">
+        <h1 class="display-3">
+          <%= message %>
+        </h1>
+        <h2 class="lead">The leading idea-sharing app!</h2>
+        <p>We strive to create an environment for you to share ideas with other like-minded individuals. Yet at the same time
+          we foster new relationships with those who are may be different, and expand your world-view.</p>
+      </header>
+    </main>
+    <!-- /.container -->
+
+    <!-- Scripts for Bootstrap -->
+    <% include ./partials/baseScripts.ejs %>
+</body>
+
+</html>

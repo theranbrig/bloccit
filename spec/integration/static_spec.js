@@ -1,6 +1,7 @@
 const request = require('request');
 const server = require('../../src/server');
 const base = 'http://localhost:3000/';
+const staticController = require('../../src/controllers/staticController');
 
 describe('routes : static', () => {
 	describe('GET /', () => {
@@ -12,11 +13,19 @@ describe('routes : static', () => {
 			});
 		});
 	});
-	describe('GET /marco', () => {
-		it('should return status code 200', done => {
-			request.get(base, (err, res, bod) => {
+	describe('GET /about', () => {
+		it('should return status code 200 and have about information', done => {
+			request.get(`${base}about`, (err, res, body) => {
 				expect(res.statusCode).toBe(200);
+				expect(body).toContain('About Us');
 				done();
+			});
+		});
+	});
+	describe('GET /marco', () => {
+		it('should return status code 200', () => {
+			request.get(`${base}marco`, (err, res, body) => {
+				expect(res.statusCode).toBe(200);
 			});
 		});
 	});
