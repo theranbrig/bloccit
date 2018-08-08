@@ -2,3 +2,6 @@
 Assignments.md
 /node_modules
 .env
+/syntax
+/.vscode
+*.pug
