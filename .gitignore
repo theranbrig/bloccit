@@ -1,7 +1,17 @@
 
-Assignments.md
+# Node and Setting Files
 /node_modules
-.env
-/syntax
 /.vscode
+/syntax
+
+# Env File
+.env
+
+# Random files
+.DS_Store
+
+# Submission Assignments
+Assignments.md
+
+# Alternate Pug Configurations
 *.pug
