@@ -2,26 +2,30 @@
 <html>
 
 <head>
-  <% include ../static/partials/head.ejs %>
+  <% include ../partials/head.ejs %>
 </head>
 
 <body>
   <main class="container">
 
-    <% include ../static/partials/navbar.ejs %>
+    <% include ../partials/navbar.ejs %>
 
       <h1>Topics</h1>
-
-      <ul class="list-group">
-        <% topics.forEach((topic) => { %>
-          <li class="list-group-item">
-            <a href="/topics/<%= topic.id %>">
-              <%= topic.title %>
-            </a>
-          </li>
-          <% }) %>
-      </ul>
-      <% include ../static/partials/baseScripts.ejs %>
+      <div class="container">
+        <h2>Explore the world of:</h2>
+        <ul class="list-group">
+          <% topics.forEach((topic) => { %>
+            <li class="list-group-item">
+              <a href="/topics/<%= topic.id %>">
+                <%= topic.title %>
+              </a>
+            </li>
+            <% }) %>
+        </ul>
+      </div>
+      <br>
+      <a href="/topics/new" class="btn btn-primary btn-sm">Create New Topic</a>
+      <% include ../partials/baseScripts.ejs %>
   </main>
 </body>
 
