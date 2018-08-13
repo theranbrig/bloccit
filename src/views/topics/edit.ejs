@@ -7,11 +7,8 @@
 
 <body>
   <% include ../partials/navbar.ejs %>
-
-    <main class="container">
-
+    <main class='container'>
       <h1>Edit Topic</h1>
-
       <form action="/topics/<%= topic.id %>/update" method="post">
         <div class="form-group">
           <label for="title">Topic Title</label>

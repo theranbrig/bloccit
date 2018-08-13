@@ -10,14 +10,10 @@
 
 		<main class="container">
 			<h1>Advertisements</h1>
-			<a href="/advertisements/new">
-				<button class="btn btn-primary">New Advertisement</button>
-			</a>
-
 			<ul class="list-group">
 				<% adverts.forEach((advert) => { %>
 					<li class="list-group-item">
-						<a href="/advertisements/<%= advert.id %>">
+						<a href="/adverts/<%= advert.id %>">
 							<%= advert.title %>
 						</a>
 						<p>
@@ -26,6 +22,9 @@
 					</li>
 					<% }) %>
 			</ul>
+			<a href="/adverts/new">
+				<button class="btn btn-primary">Create New Ad</button>
+			</a>
 		</main>
 
 		<% include ../partials/baseScripts.ejs %>
