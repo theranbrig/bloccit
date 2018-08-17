@@ -13,10 +13,20 @@
       <h1>
         <%= topic.title %>
       </h1>
+
       <p>
         <%= topic.description %>
       </p>
       <hr>
+
+      <ul class="list-group">
+        <% topic.flairs.forEach((flair) => { %>
+          <li class="list-group-item">
+            <a href="/topics/<%= topic.id %>/flair/<%= flair.id %>"> <%= flair.name %> </a>
+          </li>
+        <% }) %>
+      </ul>
+      <a href="/topics/<%= topic.id %>/flair/new" class="btn btn-success">New Flair</a>
 
       <h1>Posts</h1>
 
