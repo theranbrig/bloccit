@@ -6,17 +6,28 @@
   <body>
     <% include ../static/partials/navbar.ejs %>
 
-    <main class="container">
-      <a href="/topics/<%= post.topicId %>/" class="btn btn-primary">Back</a>
-      <h1><%= post.title %></h1>
-      <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
-      <form style="display:initial" action="/topics/<%= post.topicId %>/posts/<%= post.id %>/destroy" method="post">
-        <button type="submit" class="btn btn-danger">Delete</button>
-      </form>
-
-      <p><%= post.body %></p>
     </main>
-
+    <main class="container">
+      <a class="btn btn-primary btn-sm" href='/topics/<%= post.topicId %> '>&#x21E6;a>
+      <div>
+      </div>
+      <h1>
+        <%= post.title %>
+        <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#editCollapse" role="button" aria-expanded="false" aria-controls="editCollapse" id="editCollapseButton">&#x22C1;</a>
+      </h1>
+      <p>
+        <%= post.body %>
+      </p>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="editCollapse">
+            <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
+            <form style="display:initial" action="/topics/<%= post.topicId %>/posts/<%= post.id %>/destroy" method="post">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
     <% include ../static/partials/baseScripts.ejs %>
 
   </body>

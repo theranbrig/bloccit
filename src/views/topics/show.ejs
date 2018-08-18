@@ -9,29 +9,43 @@
   <% include ../static/partials/navbar.ejs %>
 
     <main class="container">
-      <a class="btn btn-primary btn-sm" href='/topics'>Back</a>
+      <a class="btn btn-primary btn-sm" href='/topics'>&#x21E6;</a>
+      <div>
+      </div>
       <h1>
         <%= topic.title %>
+        <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#editCollapse" role="button" aria-expanded="false" aria-controls="editCollapse" id="editCollapseButton">&#x22C1;</a>
       </h1>
       <p>
         <%= topic.description %>
       </p>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="editCollapse">
+            <a href="/topics/<%= topic.id %>/edit" class="btn btn-warning">Edit</a>
+            <form style="display:initial" action="/topics/<%= topic.id %>/destroy" method="post">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <hr>
 
       <h1>Posts</h1>
-
-      <ul class="list-group">
-        <% topic.posts.forEach((post) => { %>
-          <li class="list-group-item">
-            <a href="/topics/<%= topic.id %>/posts/<%= post.id %>"> <%= post.title %> </a>
-          </li>
-        <% }) %>
-      </ul>
-      <a href="/topics/<%= topic.id %>/posts/new" class="btn btn-success">New Post</a>
-      <a href="/topics/<%= topic.id %>/edit" class="btn btn-warning">Edit</a>
-      <form style="display:initial" action="/topics/<%= topic.id %>/destroy" method="post">
-        <button type="submit" class="btn btn-danger">Delete</button>
-      </form>
+      <div>
+        <ul class="list-group">
+          <% topic.posts.forEach((post) => { %>
+            <li class="list-group-item">
+              <a href="/topics/<%= topic.id %>/posts/<%= post.id %>"> <%= post.title %> </a>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+      <hr>
+      <div>
+        <a href="/topics/<%= topic.id %>/posts/new" class="btn btn-success">New Post</a>
+      </div>
     </main>
 
     <% include ../static/partials/baseScripts.ejs %>
