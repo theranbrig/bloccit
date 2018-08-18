@@ -1,6 +1,7 @@
 require('dotenv').config();
 const path = require('path');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 const viewsFolder = path.join(__dirname, '..', 'views');
 
 // Set view location for template engine and set where to find static assets
@@ -9,6 +10,7 @@ module.exports = {
 		app.set('views', viewsFolder);
 		app.set('view engine', 'ejs');
 		app.use(bodyParser.urlencoded({ extended: true }));
+		app.use(expressValidator());
 		app.use(express.static(path.join(__dirname, '..', 'assets')));
 	}
 };
