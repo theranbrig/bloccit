@@ -67,29 +67,21 @@ describe('Topic', () => {
 			Post.create({
 				title: 'Will the hawks win the cup?',
 				body: 'Of course.',
+				userId: this.user.id,
 				topicId: this.topic.id
-			})
-				.then(post => {
-					expect(post.title).toBe('Will the hawks win the cup?');
-
-					Post.create({
-						title: 'The smell of the rink',
-						body: 'One of the greatest smells ever',
-						topicId: this.topic.id
-					}).then(post => {
-						expect(post.title).toBe('The smell of the rink');
-						this.topic.getPosts().then(posts => {
-							expect(posts.length).toBe(2);
-							expect(posts[0].body).toBe('Of course.');
-							expect(posts[1].body).toBe('One  of the greatest smells ever.');
-							done();
-						});
+			}).then(post => {
+				this.topic
+					.getPosts()
+					.then(posts => {
+						expect(posts.length).toBe(2);
+						expect(post.body).toBe('Of course.');
+						done();
+					})
+					.catch(err => {
+						console.log(err);
+						done();
 					});
-				})
-				.catch(err => {
-					console.log(err);
-					done();
-				});
+			});
 		});
 	});
 });
