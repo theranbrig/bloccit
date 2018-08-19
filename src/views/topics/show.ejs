@@ -43,9 +43,9 @@
         </ul>
       </div>
       <hr>
-      <div>
+      <% if(currentUser) { %>
         <a href="/topics/<%= topic.id %>/posts/new" class="btn btn-success">New Post</a>
-      </div>
+      <% } %>
     </main>
 
     <% include ../static/partials/baseScripts.ejs %>
