@@ -24,7 +24,9 @@
         </ul>
       </div>
       <br>
-      <a href="/topics/new" class="btn btn-primary btn-sm">Create New Topic</a>
+      <% if(currentUser && currentUser.isAdmin()) { %>
+        <a href="/topics/new" class="btn btn-success">New Topic</a>
+      <% } %>
       <% include ../static/partials/baseScripts.ejs %>
   </main>
 </body>

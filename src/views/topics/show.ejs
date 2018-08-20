@@ -14,7 +14,11 @@
       </div>
       <h1>
         <%= topic.title %>
-        <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#editCollapse" role="button" aria-expanded="false" aria-controls="editCollapse" id="editCollapseButton">&#x21E3;</a>
+        <% if (currentUser) { %>
+          <% if (currentUser.isAdmin()) { %>
+             <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#editCollapse" role="button" aria-expanded="false" aria-controls="editCollapse" id="editCollapseButton">&#x21E3;</a>
+          <% } %>
+        <% } %>
       </h1>
       <p>
         <%= topic.description %>
