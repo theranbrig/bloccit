@@ -1,11 +1,8 @@
 const Post = require('./models').Post;
 const Topic = require('./models').Topic;
-<<<<<<< HEAD
-const Authorizer = require('../policies/post');
-=======
 const Comment = require('./models').Comment;
 const User = require('./models').User;
->>>>>>> checkpoint-12-comments
+const Authorizer = require('../policies/post');
 
 module.exports = {
 	getPost(id, callback) {
