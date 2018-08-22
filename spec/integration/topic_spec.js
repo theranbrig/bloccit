@@ -7,16 +7,14 @@ const User = require('../../src/db/models').User;
 
 describe('routes : topics', () => {
 	beforeEach(done => {
-		// before each context
-		this.topic; // define variables and bind to context
+		this.topic;
 		sequelize.sync({ force: true }).then(() => {
-			// clear database
 			Topic.create({
 				title: 'JS Frameworks',
 				description: 'There is a lot of them'
 			})
 				.then(res => {
-					this.topic = res; // store resulting topic in context
+					this.topic = res;
 					done();
 				})
 				.catch(err => {
@@ -156,12 +154,10 @@ describe('routes : topics', () => {
 				);
 			});
 		});
-	}); //end context for admin user
+	});
 
-	// context of member user
 	describe('member user performing CRUD actions for Topic', () => {
 		beforeEach(done => {
-			// before each suite in admin context
 			request.get({
 				url: 'http://localhost:3000/auth/fake',
 				form: {
@@ -205,7 +201,7 @@ describe('routes : topics', () => {
 				request.post(options, (err, res, body) => {
 					Topic.findOne({ where: { title: 'blink-182 songs' } })
 						.then(topic => {
-							expect(topic).toBeNull(); // no topic should be returned
+							expect(topic).toBeNull();
 							done();
 						})
 						.catch(err => {
@@ -218,8 +214,6 @@ describe('routes : topics', () => {
 
 		describe('GET /topics/:id', () => {
 			it('should render a view with the selected topic', done => {
-				// variables defined outside, like `this.topic` are only available
-				// inside `it` blocks.
 				request.get(`${base}${this.topic.id}`, (err, res, body) => {
 					expect(err).toBeNull();
 					expect(body).toContain('JS Frameworks');
@@ -237,7 +231,6 @@ describe('routes : topics', () => {
 
 					request.post(`${base}${this.topic.id}/destroy`, (err, res, body) => {
 						Topic.all().then(topics => {
-							// confirm that no topics were deleted
 							expect(topics.length).toBe(topicCountBeforeDelete);
 							done();
 						});
@@ -251,7 +244,7 @@ describe('routes : topics', () => {
 				request.get(`${base}${this.topic.id}/edit`, (err, res, body) => {
 					expect(err).toBeNull();
 					expect(body).not.toContain('Edit Topic');
-					expect(body).toContain('JS Frameworks'); // confirm redirect to topic show
+					expect(body).toContain('JS Frameworks');
 					done();
 				});
 			});

@@ -13,13 +13,17 @@
       </div>
       <h1>
         <%= post.title %>
-        <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#editCollapse" role="button" aria-expanded="false" aria-controls="editCollapse" id="editCollapseButton">&#x21E3;</a>
+        <% if(currentUser) { %>
+          <% if (currentUser.id === post.userId || currentUser.role === 'admin') { %>
+            <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#editCollapse" role="button" aria-expanded="false" aria-controls="editCollapse" id="editCollapseButton">&#x21E3;</a>
+          <% } %>
+        <% } %>
       </h1>
       <div class="row">
         <div class="col">
           <div class="collapse multi-collapse" id="editCollapse">
             <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit " class="btn btn-warning">Edit</a>
-            <form style="display:initial" action="/topics/<%= post.topicId %>/destroy" method="post">
+            <form style="display:initial" action="/topics/<%= post.topicId %>/posts/<%= post.id %> /destroy" method="post">
               <button type="submit" class="btn btn-danger">Delete</button>
             </form>
           </div>

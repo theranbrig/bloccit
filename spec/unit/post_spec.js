@@ -14,7 +14,7 @@ describe('Post', () => {
 				email: 'starman@tesla.com',
 				password: 'Trekkie4lyfe'
 			}).then(user => {
-				this.user = user; //store the user
+				this.user = user;
 
 				Topic.create(
 					{
@@ -44,7 +44,7 @@ describe('Post', () => {
 	});
 
 	describe('#create()', () => {
-		it('should create a post object with a title, body, and assigned topic', done => {
+		it('should create a post object with a title, body, and assigned topic and user', done => {
 			Post.create({
 				title: 'Pros of Cryosleep during the long journey',
 				body: "1. Not having to answer the 'are we there yet?' question.",
@@ -63,6 +63,7 @@ describe('Post', () => {
 					done();
 				});
 		});
+
 		it('should not create a post with missing title, body, or assigned topic', done => {
 			Post.create({
 				title: 'Pros of Cryosleep during the long journey'
@@ -77,6 +78,7 @@ describe('Post', () => {
 				});
 		});
 	});
+
 	describe('#setTopic()', () => {
 		it('should associate a topic and a post together', done => {
 			Topic.create({
@@ -84,6 +86,7 @@ describe('Post', () => {
 				description: '1. The Wi-Fi is terrible'
 			}).then(newTopic => {
 				expect(this.post.topicId).toBe(this.topic.id);
+
 				this.post.setTopic(newTopic).then(post => {
 					expect(post.topicId).toBe(newTopic.id);
 					done();
@@ -108,7 +111,6 @@ describe('Post', () => {
 				password: 'password'
 			}).then(newUser => {
 				expect(this.post.userId).toBe(this.user.id);
-
 				this.post.setUser(newUser).then(post => {
 					expect(this.post.userId).toBe(newUser.id);
 					done();
