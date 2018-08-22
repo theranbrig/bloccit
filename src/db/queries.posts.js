@@ -1,10 +1,17 @@
 const Post = require('./models').Post;
 const Topic = require('./models').Topic;
+<<<<<<< HEAD
 const Authorizer = require('../policies/post');
+=======
+const Comment = require('./models').Comment;
+const User = require('./models').User;
+>>>>>>> checkpoint-12-comments
 
 module.exports = {
 	getPost(id, callback) {
-		return Post.findById(id)
+		return Post.findById(id, {
+			include: [{ model: Comment, as: 'comments', include: [{ model: User }] }]
+		})
 			.then(post => {
 				callback(null, post);
 			})

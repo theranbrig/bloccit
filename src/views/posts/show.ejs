@@ -6,7 +6,7 @@
   <body>
     <% include ../static/partials/navbar.ejs %>
 
-
+    
     <main class="container">
       <a class="btn btn-outline-primary btn-sm" href='/topics'>&#x21E6;</a>
       <div>
@@ -29,11 +29,23 @@
           </div>
         </div>
       </div>
-
       <hr>
       <p>
         <%= post.body %>
       </p>
+      <section id="comment-form">
+        <% if (currentUser) { %>
+          <% include ../comments/new.ejs %>
+        <% } %>
+      </section>
+      <section id="comment-list">
+        <% if (post.comments) { %>
+          <% post.comments.forEach(comment => { %>
+            <%- include('../comments/show.ejs', {comment}) %>
+          <% }) %>
+        <% } %>
+      </section>
+
     <% include ../static/partials/baseScripts.ejs %>
 
   </body>
