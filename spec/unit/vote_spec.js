@@ -318,13 +318,13 @@ describe('Vote', () => {
 	describe('#hasDownvoteFor()', () => {
 		it('should return true for if user has downvoted for post', done => {
 			Vote.create({
-				value: 1,
+				value: -1,
 				userId: this.user.id,
 				postId: this.post.id
 			})
 				.then(vote => {
 					let answer = this.post.hasDownvoteFor(this.user.id, vote);
-					expect(answer).not.toBeTruthy();
+					expect(answer).toBeTruthy();
 					done();
 				})
 				.catch(err => {
