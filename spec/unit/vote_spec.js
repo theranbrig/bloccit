@@ -117,6 +117,42 @@ describe('Vote', () => {
 					done();
 				});
 		});
+
+		/////////////////////////////////////////////////
+		// Assignment: Vote value other than -1
+
+		it('should not create a downvote on a post that has a value other than -1', done => {
+			Vote.create({
+				value: -2,
+				postId: this.post.id,
+				userId: this.user.id
+			})
+				.then(vote => {
+					done();
+				})
+				.catch(err => {
+					expect(err.message).toBe('Validation error: Validation isIn on value failed');
+					done();
+				});
+		});
+
+		/////////////////////////////////////////////////
+		// Assignment: Vote Value other than 1
+
+		it('should not create an upvote on a post that has a value other than 1', done => {
+			Vote.create({
+				value: 2,
+				postId: this.post.id,
+				userId: this.user.id
+			})
+				.then(vote => {
+					done();
+				})
+				.catch(err => {
+					expect(err.message).toBe('Validation error: Validation isIn on value failed');
+					done();
+				});
+		});
 	});
 
 	describe('#setUser()', () => {
@@ -209,6 +245,87 @@ describe('Vote', () => {
 						expect(associatedPost.title).toBe('My first visit to Proxima Centauri b');
 						done();
 					});
+				})
+				.catch(err => {
+					console.log(err);
+					done();
+				});
+		});
+	});
+
+	/////////////////////////////////////////////////
+	// Assignment: Get number of votes on post
+
+	describe('#getPoints()', () => {
+		it('should return the total points for a post', done => {
+			Post.create(
+				{
+					title: 'My first visit to Proxima Centauri b',
+					body: 'I saw some rocks.',
+					userId: this.user.id,
+					topicId: this.topic.id,
+					votes: [
+						{
+							value: 1,
+							userId: this.user.id,
+							postId: this.post.id
+						}
+					]
+				},
+				{
+					include: {
+						model: Vote,
+						as: 'votes'
+					}
+				}
+			)
+				.then(post => {
+					expect(post.getPoints()).toBe(1);
+					done();
+				})
+				.catch(err => {
+					console.log(err);
+					done();
+				});
+		});
+	});
+
+	/////////////////////////////////////////////////
+	// Assignment: Has Upvote For
+
+	describe('#hasUpvoteFor()', () => {
+		it('should return true for if user has upvote for post', done => {
+			Vote.create({
+				value: 1,
+				userId: this.user.id,
+				postId: this.post.id
+			})
+				.then(vote => {
+					let answer = this.post.hasUpvoteFor(this.user.id, vote);
+					expect(answer).toBeTruthy();
+					done();
+				})
+				.catch(err => {
+					console.log(err);
+					done();
+				});
+		});
+	});
+
+	/////////////////////////////////////////////////
+	// Assignment: Has Downvote For
+
+	describe('#hasDownvoteFor()', () => {
+		it('should return true for if user has downvoted for post', done => {
+			Vote.create({
+				value: 1,
+				userId: this.user.id,
+				postId: this.post.id
+			})
+				.then(vote => {
+					let answer = this.post.hasDownvoteFor(this.user.id, vote);
+					expect(answer).not.toBeTruthy();
+					done();
 				})
 				.catch(err => {
 					console.log(err);

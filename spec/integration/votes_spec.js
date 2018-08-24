@@ -100,7 +100,7 @@ describe('routes : votes', () => {
 
 	////////////////////////////////////////////////
 	// MEMBER USER TESTS
-  ////////////////////////////////////////////////
+	////////////////////////////////////////////////
 
 	describe('signed in user voting on a post', () => {
 		beforeEach(done => {
@@ -144,6 +144,80 @@ describe('routes : votes', () => {
 				});
 			});
 		});
+
+		describe('GET /topics/:topicId/posts/:postId/votes/upvote', () => {
+			it('should create an upvote', done => {
+				const options = {
+					url: `${base}${this.topic.id}/posts/${this.post.id}/votes/upvote`
+				};
+				request.get(options, (err, res, body) => {
+					Vote.findOne({
+						where: {
+							userId: this.user.id,
+							postId: this.post.id
+						}
+					})
+						.then(vote => {
+							expect(vote).not.toBeNull();
+							expect(vote.value).toBe(1);
+							expect(vote.userId).toBe(this.user.id);
+							expect(vote.postId).toBe(this.post.id);
+							done();
+						})
+						.catch(err => {
+							console.log(err);
+							done();
+						});
+				});
+			});
+
+			/////////////////////////////////////////////////
+			// Assignment: One upvote per user.
+
+			it('should not create multiple upvotes per user', done => {
+				const options = {
+					url: `${base}${this.topic.id}/posts/${this.post.id}/votes/upvote`
+				};
+				request.get(options, (err, res, body) => {
+					Vote.findOne({
+						where: {
+							userId: this.user.id,
+							postId: this.post.id
+						}
+					})
+						.then(vote => {
+							expect(vote).not.toBeNull();
+							expect(vote.value).toBe(1);
+							expect(vote.userId).toBe(this.user.id);
+							done();
+						})
+						.catch(err => {
+							console.log(err);
+							done();
+						});
+				});
+				// Test for repeated vote
+				request.get(options, (err, res, body) => {
+					Vote.findOne({
+						where: {
+							userId: this.user.id,
+							postId: this.post.id
+						}
+					})
+						.then(vote => {
+							expect(vote).not.toBeNull();
+							expect(vote.value).toBe(1);
+							expect(vote.userId).toBe(this.user.id);
+							done();
+						})
+						.catch(err => {
+							console.log(err);
+							done();
+						});
+				});
+			});
+		});
+
 		describe('GET /topics/:topicId/posts/:postId/votes/downvote', () => {
 			it('should create a downvote', done => {
 				const options = {
@@ -157,7 +231,6 @@ describe('routes : votes', () => {
 						}
 					})
 						.then(vote => {
-							// confirm that a downvote was created
 							expect(vote).not.toBeNull();
 							expect(vote.value).toBe(-1);
 							expect(vote.userId).toBe(this.user.id);
@@ -170,10 +243,58 @@ describe('routes : votes', () => {
 						});
 				});
 			});
+
+			/////////////////////////////////////////////////
+			// Assignment: One downvote per user
+
+			it('should not create multiple downvotes per user', done => {
+				const options = {
+					url: `${base}${this.topic.id}/posts/${this.post.id}/votes/downvote`
+				};
+				request.get(options, (err, res, body) => {
+					Vote.findOne({
+						where: {
+							userId: this.user.id,
+							postId: this.post.id
+						}
+					})
+						.then(vote => {
+							expect(vote).not.toBeNull();
+							expect(vote.value).toBe(-1);
+							expect(vote.userId).toBe(this.user.id);
+							done();
+						})
+						.catch(err => {
+							console.log(err);
+							done();
+						});
+				});
+				// Test for repeated vote
+				request.get(options, (err, res, body) => {
+					Vote.findOne({
+						where: {
+							userId: this.user.id,
+							postId: this.post.id
+						}
+					})
+						.then(vote => {
+							expect(vote).not.toBeNull();
+							expect(vote.value).toBe(-1);
+							expect(vote.userId).toBe(this.user.id);
+							done();
+						})
+						.catch(err => {
+							console.log(err);
+							done();
+						});
+				});
+			});
 		});
 	});
-
-	////////////////////////////////////////////////
-	// ADMIN USER TESTS
-	////////////////////////////////////////////////
 });
+
+// Write a test for the getPoints method of the Post model.
+
+// Write a test for a method called hasUpvoteFor(). We will call this method on a Post object with userId as an argument. It returns true if the user with the matching userId has an upvote for the post. Implement the method.
+
+// Write a test for a method called hasDownvoteFor(). We will call this method on a Post object with userId as an argument. It returns true if the user with the matching userId has a downvote for the post. Implement the method.
