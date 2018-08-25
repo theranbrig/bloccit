@@ -86,7 +86,7 @@ describe('routes : votes', () => {
 						}
 					})
 						.then(vote => {
-							expect(vote).toBeNull();
+							expect(vote).not.toBeNull();
 							done();
 						})
 						.catch(err => {
@@ -100,7 +100,7 @@ describe('routes : votes', () => {
 
 	////////////////////////////////////////////////
 	// MEMBER USER TESTS
-  ////////////////////////////////////////////////
+	////////////////////////////////////////////////
 
 	describe('signed in user voting on a post', () => {
 		beforeEach(done => {
