@@ -109,6 +109,10 @@ p {
 	color: gainsboro !important;
 }
 
+#unfavorite-button {
+	color: white;
+}
+
 .topics-header h1 {
 	font-family: 'Pacifico', cursive;
 	color: #1b1b1e;
@@ -167,7 +171,7 @@ p {
 	background-repeat: no-repeat;
 	opacity: 0;
 	z-index: 0;
-	animation: imageAnimation 50s linear infinite;
+	animation: imageAnimation 25s linear infinite;
 }
 
 .slideshow-landing li:nth-child(1) {

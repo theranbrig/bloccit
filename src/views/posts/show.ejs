@@ -17,6 +17,9 @@
           <h1>
             <%= post.title %>
             <% if(currentUser) { %>
+              <% include ../favorites/favoriting.ejs %>
+            <% } %>
+            <% if(currentUser) { %>
               <% if (currentUser.id === post.userId || currentUser.role === 'admin') { %>
                 <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#editCollapse" role="button" aria-expanded="false" aria-controls="editCollapse" id="editCollapseButton">&#x21E3;</a>
               <% } %>
@@ -33,6 +36,7 @@
             </div>
           </div>
         </div>
+
         <hr>
         <p>
           <%= post.body %>
