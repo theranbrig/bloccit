@@ -9,10 +9,13 @@
   <main class="container">
 
   <% include ../static/partials/navbar.ejs %>
-
-      <h1>Topics</h1>
-      <div class="container">
+    <a class="btn btn-outline-primary btn-sm" href='/main'>&#x21E6;</a>
+      <div class="topics-header">
+        <h1>Bloccit Topics</h1>
         <h2>Explore the world of:</h2>
+      </div>
+
+      <div class="container">
         <ul class="list-group">
           <% topics.forEach((topic) => { %>
             <li class="list-group-item">
@@ -25,7 +28,7 @@
       </div>
       <br>
       <% if(currentUser && currentUser.isAdmin()) { %>
-        <a href="/topics/new" class="btn btn-success">New Topic</a>
+        <a href="/topics/new" class="btn btn-outline-primary">New Topic</a>
       <% } %>
       <% include ../static/partials/baseScripts.ejs %>
   </main>

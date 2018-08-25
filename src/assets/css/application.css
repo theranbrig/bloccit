@@ -1,3 +1,218 @@
 body {
 	padding-top: 70px;
+	background-color: #eee5e9;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.navbar {
+	background-color: #58a4b0 !important;
+}
+
+.navbar-dark .navbar-brand {
+	font-family: 'Pacifico', cursive;
+	color: #1b1b1e;
+	text-shadow: 1px 1px 1px #a9bcd0;
+}
+
+.navbar-dark .navbar-brand:hover {
+	color: #5c6b73;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+	color: #1b1b1e;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+	color: #373f51;
+}
+
+.jumbotron {
+	background: #5c6b73;
+	text-align: center;
+	border: 3px solid #58a4b0;
+}
+
+.jumbotron h1 {
+	font-family: 'Pacifico', cursive;
+	color: #58a4b0;
+	text-shadow: 3px 3px 3px #1b1b1e;
+}
+
+.jumbotron p,
+.jumbotron .btn-primary {
+	color: #f3f9ff;
+}
+
+h4 {
+	color: #373f51;
+	text-shadow: 1px 1px 1px #58a4b0;
+	font-family: 'Pacifico', cursive;
+}
+
+p {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.list-group li:nth-child(odd) {
+	background-color: white;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.list-group li:nth-child(even) {
+	background-color: #fdfdfd;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.list-group li a,
+.list-group li p {
+	color: #58a4b0;
+	text-decoration: none;
+}
+
+.list-group .post-title {
+	padding: 0 0 0 10px;
+}
+
+.list-group li p {
+	color: #373f51;
+	padding: 10px 0 0;
+}
+/* BUTTON STYLING */
+
+.btn-primary {
+	background: #58a4b0;
+	color: #1b1b1e;
+	border-color: #58a4b0;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus {
+	background: #58a4b0 !important;
+	color: #f3f9ff !important;
+	border-color: #58a4b0 !important;
+}
+
+.btn-outline-primary {
+	border-color: #58a4b0 !important;
+	color: #58a4b0 !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary:active:focus {
+	border-color: #58a4b0 !important;
+	background-color: #58a4b0 !important;
+	color: gainsboro !important;
+}
+
+.topics-header h1 {
+	font-family: 'Pacifico', cursive;
+	color: #1b1b1e;
+	text-shadow: 2px 2px 2px #58a4b0;
+	padding: 20px 0;
+	text-align: center;
+}
+
+.topics-header h2 {
+	font-family: 'Open Sans', sans-serif;
+}
+
+#topics-posts {
+	font-family: 'Pacifico', cursive;
+	color: #1b1b1e;
+	text-shadow: 2px 2px 2px #58a4b0;
+	padding: 10px 0;
+	text-align: center;
+}
+
+/* LANDING PAGE */
+
+#landing-header {
+	z-index: 1;
+	position: relative;
+	text-align: center;
+	padding-top: 40vh;
+}
+
+#landing-header h1 {
+	font-family: 'Pacifico', cursive;
+	color: #e4e4e4;
+	text-shadow: 3px 3px 3px #1b1b1e;
+}
+
+.slideshow-landing {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.slideshow-landing li {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	opacity: 0;
+	z-index: 0;
+	animation: imageAnimation 50s linear infinite;
+}
+
+.slideshow-landing li:nth-child(1) {
+	background-image: url(https://images.unsplash.com/photo-1494913148647-353ae514b35e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=690fde360cf073d36a84808c5f655c0e&auto=format&fit=crop&w=1352&q=80);
+}
+
+.slideshow-landing li:nth-child(2) {
+	background-image: url(https://images.unsplash.com/photo-1504992963429-56f2d62fbff0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=237d8574a6354ecc190cb611aedff03e&auto=format&fit=crop&w=1350&q=80);
+	animation-delay: 5s;
+}
+
+.slideshow-landing li:nth-child(3) {
+	background-image: url(https://images.unsplash.com/photo-1534840940217-e51f4f68daeb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=690e872f284a5e7389fd71c63aed40a6&auto=format&fit=crop&w=1351&q=80);
+	animation-delay: 10s;
+}
+
+.slideshow-landing li:nth-child(4) {
+	background-image: url(https://images.unsplash.com/photo-1526485856375-9110812fbf35?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9d1b2af9b97e338e3a5d1160a8d1f0a4&auto=format&fit=crop&w=1350&q=80);
+	animation-delay: 15s;
+}
+
+.slideshow-landing li:nth-child(5) {
+	background-image: url(https://images.unsplash.com/photo-1504887182320-89fabf6079c3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=acacb84d200708ffed9b2648ddbf7c63&auto=format&fit=crop&w=1349&q=80);
+	animation-delay: 20s;
+}
+
+@keyframes imageAnimation {
+	0% {
+		opacity: 0;
+		animation-timing-function: ease-in;
+	}
+	10% {
+		opacity: 1;
+		animation-timing-function: ease-out;
+	}
+	20% {
+		opacity: 1;
+	}
+	30% {
+		opacity: 0;
+	}
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+
+.no-cssanimations .slideshow li {
+	opacity: 1;
 }

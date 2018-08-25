@@ -9,9 +9,10 @@
   <% include ../static/partials/navbar.ejs %>
 
     <main class="container">
-      <a class="btn btn-outline-primary btn-sm" href='/topics'>&#x21E6;</a>
-      <div>
-      </div>
+      <a class="btn btn-outline-primary btn-sm" href="/topics">&#x21E6;</a>
+
+      <hr>
+
       <h1>
         <%= topic.title %>
         <% if (currentUser) { %>
@@ -25,10 +26,10 @@
       </p>
       <div class="row">
         <div class="col">
-          <div class="collapse multi-collapse" id="editCollapse">
-            <a href="/topics/<%= topic.id %>/edit" class="btn btn-warning">Edit</a>
+          <div class="collapse multi-collapse" class="btn btn-outline-primary btn-sm" id="editCollapse">
+            <a href="/topics/<%= topic.id %>/edit" class="btn btn-outline-warning">Edit</a>
             <form style="display:initial" action="/topics/<%= topic.id %>/destroy" method="post">
-              <button type="submit" class="btn btn-danger">Delete</button>
+              <button type="submit" class="btn btn-outline-danger">Delete</button>
             </form>
           </div>
         </div>
@@ -36,19 +37,23 @@
 
       <hr>
 
-      <h1>Posts</h1>
+      <h2 id="topics-posts">Posts</h2>
       <div>
         <ul class="list-group">
           <% topic.posts.forEach((post) => { %>
             <li class="list-group-item">
-              <a href="/topics/<%= topic.id %>/posts/<%= post.id %>"> <%= post.title %> </a>
+              <a data-toggle="collapse" href="#infoCollapse<%= post.id %>" role="button" aria-expanded="false" aria-controls="infoCollapse" id="infoCollapseButton" class="btn btn-outline-primary btn-sm">&#x21E3;</a>
+              <a href="/topics/<%= topic.id %>/posts/<%= post.id %>" class="post-title"> <%= post.title %></a>
+              <div class="collapse multi-collapse" id="infoCollapse<%= post.id %>">
+                <p><%= post.body %> </p>
+              </div>
             </li>
           <% }) %>
         </ul>
       </div>
       <hr>
       <% if(currentUser) { %>
-        <a href="/topics/<%= topic.id %>/posts/new" class="btn btn-success">New Post</a>
+        <a href="/topics/<%= topic.id %>/posts/new" class="btn btn-outline-primary">New Post</a>
       <% } %>
     </main>
 

@@ -9,7 +9,7 @@
     <% include ../static/partials/messages.ejs %>
 
     <main class="container">
-      <a class="btn btn-outline-primary btn-sm" href='/topics'>&#x21E6;</a>
+      <a class="btn btn-outline-primary btn-sm" href='/topics/<%= post.topicId %>'>&#x21E6;</a>
         <div style="display: flex; align-items:center;">
           <% if(currentUser) { %>
             <% include ../votes/voting.ejs %>
@@ -26,9 +26,9 @@
         <div class="row">
           <div class="col">
             <div class="collapse multi-collapse" id="editCollapse">
-              <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit " class="btn btn-warning">Edit</a>
+              <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/edit " class="btn btn-outline-warning">Edit</a>
               <form style="display:initial" action="/topics/<%= post.topicId %>/posts/<%= post.id %> /destroy" method="post">
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
               </form>
             </div>
           </div>

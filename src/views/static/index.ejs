@@ -19,12 +19,17 @@
       <header class="jumbotron my-4">
         <% if (currentUser) { %>
           <h1>Welcome: <%= currentUser.email %>!</h1>
+          <p class="lead">Explore the world around you.</p>
+          <a href="/topics" class="btn btn-primary btn-lg">View Topics</a>
         <% } else { %>
           <h1 class="display-3">Welcome to Bloccit</h1>
-        <% } %>
           <p class="lead">An application for users to share information.</p>
-          <a href="/users/sign_up" class="btn btn-primary btn-lg">Sign up</a>
-        </header>
+          <div>
+            <a href="/users/sign_up" class="btn btn-primary btn-lg">Sign Up</a>
+            <a href="/users/sign_in" class="btn btn-primary btn-lg">Sign In</a>
+          </div>
+        <% } %>
+      </header>
 
 
 
@@ -32,16 +37,19 @@
       <section class="row text-center">
 
         <section class="col-lg-4">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1534775445961-2b6f690c74a3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b42e1725edd798608937e669c2660868&auto=format&fit=crop&w=634&q=80" alt="Card image cap">
           <h4 class="card-title">Post</h4>
           <p class="card-text">Share your thoughts about subjects that are important to you.</p>
         </section>
 
         <section class="col-lg-4">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1534817043788-41286c872b7b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=230c78110321a3671bc45f6a065f42f1&auto=format&fit=crop&w=634&q=80" alt="Card image cap">
           <h4 class="card-title">Comment</h4>
           <p class="card-text">Your opinion counts! But you have to make yourself heard first!</p>
         </section>
 
         <section class="col-lg-4">
+          <img class="card-img-top" src="https://images.unsplash.com/photo-1534995974437-2917ba36d1ca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3b7a8d4c0a9a518712268fc73152d13e&auto=format&fit=crop&w=641&q=80" alt="Card image cap">
           <h4 class="card-title">Stay Informed</h4>
           <p class="card-text">See the most active topics as well as trending subjects every day!</p>
         </section>

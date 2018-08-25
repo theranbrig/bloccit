@@ -12,5 +12,8 @@ module.exports = {
 	},
 	marco(req, res, next) {
 		res.send('Polo');
+	},
+	landing(req, res, next) {
+		res.render('static/landing')
 	}
 };
