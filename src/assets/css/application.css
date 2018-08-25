@@ -171,7 +171,7 @@ p {
 	background-repeat: no-repeat;
 	opacity: 0;
 	z-index: 0;
-	animation: imageAnimation 25s linear infinite;
+	animation: imageAnimation 30s linear infinite;
 }
 
 .slideshow-landing li:nth-child(1) {
@@ -198,6 +198,10 @@ p {
 	animation-delay: 20s;
 }
 
+.slideshow-landing li:nth-child(6) {
+	background-image: url(https://images.unsplash.com/photo-1534737480428-0be77c7851bf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3f23a9a63ce075d96926955f953a9e9d&auto=format&fit=crop&w=1350&q=80);
+	animation-delay: 25s;
+}
 @keyframes imageAnimation {
 	0% {
 		opacity: 0;
@@ -220,3 +224,15 @@ p {
 .no-cssanimations .slideshow li {
 	opacity: 1;
 }
+
+.card-img-top {
+	max-height: 450px;
+	max-width: 85%;
+}
+
+#upvote,
+#downvote {
+	color: #58a4b0;
+	text-decoration: none;
+}
+
