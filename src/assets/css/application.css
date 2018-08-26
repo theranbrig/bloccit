@@ -54,6 +54,11 @@ p {
 	font-family: 'Open Sans', sans-serif;
 }
 
+a {
+	color: #58a4b0;
+	text-decoration: none !important;
+}
+
 .list-group li:nth-child(odd) {
 	background-color: white;
 	font-family: 'Open Sans', sans-serif;
@@ -227,7 +232,6 @@ p {
 
 .card-img-top {
 	max-height: 450px;
-	max-width: 85%;
 }
 
 #upvote,
@@ -236,3 +240,8 @@ p {
 	text-decoration: none;
 }
 
+@media (max-width: 575px) {
+	.card-img-top {
+		max-width: 50%;
+	}
+}
