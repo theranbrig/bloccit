@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 				allowNull: false
 			},
 			username: {
-				type: DataTypes.STRING,
+				type: DataTypes.STRING
 			},
 			role: {
 				type: DataTypes.STRING,
@@ -43,8 +43,10 @@ module.exports = (sequelize, DataTypes) => {
 			as: 'favorites'
 		});
 	};
+
 	User.prototype.isAdmin = function() {
 		return this.role === 'admin';
 	};
+
 	return User;
 };

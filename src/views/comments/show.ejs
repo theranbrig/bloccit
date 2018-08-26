@@ -1,13 +1,14 @@
+
 <% if(comment) { %>
-  <div style="width: 70%">
+  <div style="width: 50%">
     <hr>
     <p>
       <%= comment.body %>
     </p>
     <small class="card-subtitle mb-2 text-muted">
-      Sent by <%= comment.User.email %> on <%= comment.createdAt %>
+      Sent by <%= comment.User.email %> on <%= comment.createdAt.toDateString() %>
     </small>
-    <% if(currentUser && currentUser.id === comment.userId || currentUser.isAdmin()) { %>
+    <% if(currentUser && currentUser.id === comment.userId || currentUser.role === 'admin') { %>
       <form style="display:initial"
             action="/topics/<%= post.topicId %>/posts/<%= post.id %>/comments/<%= comment.id %>/destroy"
             method="post">
@@ -17,3 +18,4 @@
     <hr>
   </div>
 <% } %>
+
