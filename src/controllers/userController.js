@@ -9,6 +9,7 @@ module.exports = {
 		let newUser = {
 			email: req.body.email,
 			password: req.body.password,
+			username: req.body.username,
 			passwordConfirmation: req.body.passwordConfirmation
 		};
 		userQueries.createUser(newUser, (err, user) => {
@@ -45,11 +46,11 @@ module.exports = {
 	show(req, res, next) {
 		userQueries.getUser(req.params.id, (err, result) => {
 			if (err || result.user === undefined) {
-				req.flash('notice', 'No user found with that ID.')
-				res.redirect('/')
+				req.flash('notice', 'No user found with that ID.');
+				res.redirect('/');
 			} else {
-				res.render('users/show', {...result})
+				res.render('users/show', { ...result });
 			}
-		})
+		});
 	}
 };

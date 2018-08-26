@@ -2,7 +2,6 @@
 const request = require('request');
 const server = require('../../src/server');
 const base = 'http://localhost:3000/topics/';
-
 const sequelize = require('../../src/db/models/index').sequelize;
 const Topic = require('../../src/db/models').Topic;
 const Post = require('../../src/db/models').Post;
@@ -19,7 +18,8 @@ describe('routes : comments', () => {
 		sequelize.sync({ force: true }).then(res => {
 			User.create({
 				email: 'starman@tesla.com',
-				password: 'Trekkie4lyfe'
+				password: 'Trekkie4lyfe',
+				username: 'user'
 			}).then(user => {
 				this.user = user;
 

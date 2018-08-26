@@ -42,12 +42,15 @@ body {
 .jumbotron p,
 .jumbotron .btn-primary {
 	color: #f3f9ff;
+	margin: 25px 0 0 0;
+	font-family: 'Open Sans', sans-serif;
 }
 
 h4 {
 	color: #373f51;
 	text-shadow: 1px 1px 1px #58a4b0;
 	font-family: 'Pacifico', cursive;
+	padding: 15px 0 0 0;
 }
 
 p {
@@ -118,7 +121,9 @@ a {
 	color: white;
 }
 
-.topics-header h1 {
+.topics-header h1,
+#topics-posts,
+.profile-header {
 	font-family: 'Pacifico', cursive;
 	color: #1b1b1e;
 	text-shadow: 2px 2px 2px #58a4b0;
@@ -131,11 +136,7 @@ a {
 }
 
 #topics-posts {
-	font-family: 'Pacifico', cursive;
-	color: #1b1b1e;
-	text-shadow: 2px 2px 2px #58a4b0;
 	padding: 10px 0;
-	text-align: center;
 }
 
 /* LANDING PAGE */
@@ -231,7 +232,7 @@ a {
 }
 
 .card-img-top {
-	max-height: 450px;
+	max-width: 85%;
 }
 
 #upvote,
@@ -240,8 +241,12 @@ a {
 	text-decoration: none;
 }
 
-@media (max-width: 575px) {
-	.card-img-top {
-		max-width: 50%;
-	}
+.col-md-4 {
+	padding: 0 0 30px 0;
 }
+
+/* @media (max-width: 765px) {
+	.card-img-top {
+		max-width: 60%;
+	}
+} */

@@ -18,7 +18,8 @@ describe('routes : votes', () => {
 		sequelize.sync({ force: true }).then(res => {
 			User.create({
 				email: 'starman@tesla.com',
-				password: 'Trekkie4lyfe'
+				password: 'Trekkie4lyfe',
+				username: 'user'
 			}).then(res => {
 				this.user = res;
 
@@ -100,7 +101,7 @@ describe('routes : votes', () => {
 
 	////////////////////////////////////////////////
 	// MEMBER USER TESTS
-  ////////////////////////////////////////////////
+	////////////////////////////////////////////////
 
 	describe('signed in user voting on a post', () => {
 		beforeEach(done => {

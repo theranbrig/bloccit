@@ -11,7 +11,8 @@ describe('Topic', () => {
 		sequelize.sync({ force: true }).then(res => {
 			User.create({
 				email: 'starman@tesla.com',
-				password: 'Trekkie4lyfe'
+				password: 'Trekkie4lyfe',
+				username: 'user'
 			}).then(user => {
 				this.user = user;
 				Topic.create(

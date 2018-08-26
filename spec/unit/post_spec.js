@@ -12,7 +12,8 @@ describe('Post', () => {
 		sequelize.sync({ force: true }).then(res => {
 			User.create({
 				email: 'starman@tesla.com',
-				password: 'Trekkie4lyfe'
+				password: 'Trekkie4lyfe',
+				username: 'user'
 			}).then(user => {
 				this.user = user;
 
@@ -108,7 +109,8 @@ describe('Post', () => {
 		it('should associate a post and a user together', done => {
 			User.create({
 				email: 'ada@example.com',
-				password: 'password'
+				password: 'password',
+				username: 'user'
 			}).then(newUser => {
 				expect(this.post.userId).toBe(this.user.id);
 				this.post.setUser(newUser).then(post => {

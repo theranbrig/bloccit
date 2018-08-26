@@ -34,7 +34,8 @@ describe('routes : users', () => {
 				url: base,
 				form: {
 					email: 'user@example.com',
-					password: '1234567890'
+					password: '1234567890',
+					username: 'user'
 				}
 			};
 			request.post(options, (err, res, body) => {
@@ -57,7 +58,8 @@ describe('routes : users', () => {
 					url: base,
 					form: {
 						email: 'no',
-						password: '1234567890'
+						password: '1234567890',
+						username: 'user'
 					}
 				},
 				(err, res, body) => {
@@ -74,6 +76,7 @@ describe('routes : users', () => {
 			);
 		});
 	});
+
 	describe('GET /users/sign_in', () => {
 		it('should render a view with a sign in form', done => {
 			request.get(`${base}sign_in`, (err, res, body) => {
@@ -83,7 +86,7 @@ describe('routes : users', () => {
 			});
 		});
 	});
-	
+
 	describe('GET /users/:id', () => {
 		beforeEach(done => {
 			this.user;
@@ -93,8 +96,8 @@ describe('routes : users', () => {
 			User.create({
 				email: 'starman@tesla.com',
 				password: 'Trekkie4lyfe'
-			}).then(res => {
-				this.user = res;
+			}).then(user => {
+				this.user = user;
 
 				Topic.create(
 					{
@@ -114,15 +117,15 @@ describe('routes : users', () => {
 							as: 'posts'
 						}
 					}
-				).then(res => {
-					this.post = res.posts[0];
+				).then(post => {
+					this.post = post.posts[0];
 
 					Comment.create({
 						body: 'This comment is alright.',
 						postId: this.post.id,
 						userId: this.user.id
-					}).then(res => {
-						this.comment = res;
+					}).then(comment => {
+						this.comment = comment;
 						done();
 					});
 				});
@@ -131,8 +134,8 @@ describe('routes : users', () => {
 
 		it('should present a list of comments and posts a user has created', done => {
 			request.get(`${base}${this.user.id}`, (err, res, body) => {
-				expect(body).toContain('Snowball Fighting');
 				expect(body).toContain('This comment is alright.');
+				expect(body).toContain('Snowball Fighting');
 				done();
 			});
 		});

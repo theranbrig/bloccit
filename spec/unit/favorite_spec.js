@@ -7,16 +7,16 @@ const Favorite = require('../../src/db/models').Favorite;
 
 describe('Favorite', () => {
 	beforeEach(done => {
-    
 		this.user;
 		this.topic;
 		this.post;
-    this.favorite;
+		this.favorite;
 
 		sequelize.sync({ force: true }).then(res => {
 			User.create({
 				email: 'starman@tesla.com',
-				password: 'Trekkie4lyfe'
+				password: 'Trekkie4lyfe',
+				username: 'trekkie'
 			}).then(res => {
 				this.user = res;
 
@@ -66,7 +66,6 @@ describe('Favorite', () => {
 	});
 
 	describe('#create()', () => {
-
 		it('should create a favorite for a post on a user', done => {
 			Favorite.create({
 				postId: this.post.id,
@@ -109,15 +108,14 @@ describe('Favorite', () => {
 
 				User.create({
 					email: 'bob@example.com',
-					password: 'password'
+					password: 'password',
+					user: 'generic'
 				})
 					.then(newUser => {
-						this.favorite
-							.setUser(newUser)
-							.then(favorite => {
-								expect(favorite.userId).toBe(newUser.id);
-								done();
-							});
+						this.favorite.setUser(newUser).then(favorite => {
+							expect(favorite.userId).toBe(newUser.id);
+							done();
+						});
 					})
 					.catch(err => {
 						console.log(err);

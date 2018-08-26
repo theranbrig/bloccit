@@ -29,7 +29,8 @@ describe('routes : topics', () => {
 			User.create({
 				email: 'admin@example.com',
 				password: '123456',
-				role: 'admin'
+				role: 'admin',
+				username: 'user'
 			}).then(user => {
 				request.get(
 					{
@@ -37,7 +38,8 @@ describe('routes : topics', () => {
 						form: {
 							role: user.role,
 							userId: user.id,
-							email: user.email
+							email: user.email,
+							username: user.username
 						}
 					},
 					(err, res, body) => {

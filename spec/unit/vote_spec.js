@@ -14,7 +14,8 @@ describe('Vote', () => {
 		sequelize.sync({ force: true }).then(res => {
 			User.create({
 				email: 'starman@tesla.com',
-				password: 'Trekkie4lyfe'
+				password: 'Trekkie4lyfe',
+				username: 'trekkie'
 			}).then(res => {
 				this.user = res;
 
@@ -130,7 +131,8 @@ describe('Vote', () => {
 				expect(vote.userId).toBe(this.user.id);
 				User.create({
 					email: 'bob@example.com',
-					password: 'password'
+					password: 'password',
+					user: 'generic'
 				})
 					.then(newUser => {
 						this.vote.setUser(newUser).then(vote => {
