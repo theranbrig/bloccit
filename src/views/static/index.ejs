@@ -11,7 +11,7 @@
   <% include ./partials/navbar.ejs %>
 
     <!-- Page Content -->
-    <main class="container">
+    <main>
 
       <!-- Jumbotron Header -->
 
@@ -19,15 +19,17 @@
       <header class="jumbotron my-4">
         <% if (currentUser) { %>
           <% if (currentUser.username) { %>
-            <h1>Welcome: <%= currentUser.username %>!</>
+            <h1 class="display-3">Welcome: <%= currentUser.username %>!</>
           <% } else { %>
-            <h1>Welcome: <%= currentUser.email %></h1>
+            <h1 class="display-3">Welcome: <%= currentUser.email %></h1>
           <% } %>
           <p class="lead">Explore the world around you.</p>
-          <a href="/topics" class="btn btn-primary btn-lg">View Topics</a>
+          <div>
+            <a href="/topics" class="btn btn-primary btn-lg">View Topics</a>
+          </div>
         <% } else { %>
           <h1 class="display-3">Welcome to Bloccit</h1>
-          <p class="lead">An application for users to share information.</p>
+          <p class="lead">Explore new horizons and open your mind.</p>
           <div>
             <a href="/users/sign_up" class="btn btn-primary btn-lg">Sign Up</a>
             <a href="/users/sign_in" class="btn btn-primary btn-lg">Sign In</a>
@@ -38,27 +40,29 @@
 
 
       <!-- Page Features -->
-      <section class="row text-center">
+      <div class="container">
+        <section class="row text-center">
 
-        <section class="col-md-4">
-          <img class="card-img-top img-thumbnail" src="https://images.unsplash.com/photo-1534775445961-2b6f690c74a3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b42e1725edd798608937e669c2660868&auto=format&fit=crop&w=634&q=80" alt="Canyon Bend">
-          <h4 class="card-title">Post</h4>
-          <p class="card-text">Share your thoughts about subjects that are important to you.</p>
+          <section class="col-md-4">
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1534775445961-2b6f690c74a3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b42e1725edd798608937e669c2660868&auto=format&fit=crop&w=634&q=80" alt="Canyon Bend">
+            <h4 class="card-title">Post</h4>
+            <p class="card-text">Share your thoughts about subjects that are important to you.</p>
+          </section>
+
+          <section class="col-md-4">
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1534817043788-41286c872b7b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=230c78110321a3671bc45f6a065f42f1&auto=format&fit=crop&w=634&q=80" alt="Subway Platform">
+            <h4 class="card-title">Comment</h4>
+            <p class="card-text">Your opinion counts! But you have to make yourself heard first!</p>
+          </section>
+
+          <section class="col-md-4">
+            <img class="card-img-top" src="https://images.unsplash.com/photo-1530919424169-4b95f917e937?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1831ca8f86228a8439744fd91da0f7a4&auto=format&fit=crop&w=933&q=80" alt="Storm Photo">
+            <h4 class="card-title">Stay Informed</h4>
+            <p class="card-text">See the most active topics as well as trending subjects every day!</p>
+          </section>
+
         </section>
-
-        <section class="col-md-4">
-          <img class="card-img-top img-thumbnail" src="https://images.unsplash.com/photo-1534817043788-41286c872b7b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=230c78110321a3671bc45f6a065f42f1&auto=format&fit=crop&w=634&q=80" alt="Subway Platform">
-          <h4 class="card-title">Comment</h4>
-          <p class="card-text">Your opinion counts! But you have to make yourself heard first!</p>
-        </section>
-
-        <section class="col-md-4">
-          <img class="card-img-top img-thumbnail" src="https://images.unsplash.com/photo-1514856841774-b927b221d7c9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7201741324cd6a20ac71d73f9efc1b16&auto=format&fit=crop&w=634&q=80" alt="Storm Photo">
-          <h4 class="card-title">Stay Informed</h4>
-          <p class="card-text">See the most active topics as well as trending subjects every day!</p>
-        </section>
-
-      </section>
+      </div>
       <!-- /.row -->
 
     </main>

@@ -1,6 +1,6 @@
 body {
 	padding-top: 70px;
-	background-color: #eee5e9;
+	background-color: #e3e5e9;
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -30,7 +30,12 @@ body {
 .jumbotron {
 	background: #5c6b73;
 	text-align: center;
-	border: 3px solid #58a4b0;
+	border-radius: 0 !important;
+	margin-top: -15px !important;
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-image: url(https://images.unsplash.com/photo-1496670013738-4f730477bfdb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7087dd5296a01e2b3f38cf920a733645&auto=format&fit=crop&w=1950&q=80);
 }
 
 .jumbotron h1 {
@@ -39,11 +44,18 @@ body {
 	text-shadow: 3px 3px 3px #1b1b1e;
 }
 
-.jumbotron p,
-.jumbotron .btn-primary {
+.jumbotron p {
 	color: #f3f9ff;
 	margin: 25px 0 0 0;
 	font-family: 'Open Sans', sans-serif;
+	text-shadow: 1px 1px 1px #1b1b1e;
+	letter-spacing: 2px;
+	padding: 0 0 15px 0;
+}
+
+.jumbotron .btn-primary {
+	color: #f3f9ff;
+	margin: 10px 5px 0 5px;
 }
 
 h4 {
@@ -92,6 +104,7 @@ a {
 	background: #58a4b0;
 	color: #1b1b1e;
 	border-color: #58a4b0;
+	color: #f3f9ff !important;
 }
 
 .btn-primary:hover,
